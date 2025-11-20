@@ -1,4 +1,4 @@
--- Auto-generated from schema-map-mysql.psd1 (map@734a489)
+-- Auto-generated from schema-map-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  signatures
 ALTER TABLE signatures ADD CONSTRAINT fk_sigs_algo FOREIGN KEY (algo_id) REFERENCES crypto_algorithms(id) ON DELETE RESTRICT;
