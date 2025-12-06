@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class SignatureDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'subject_table' => 'subjectTable', 'subject_pk' => 'subjectPk', 'algo_id' => 'algoId', 'signing_key_id' => 'signingKeyId', 'payload_hash' => 'payloadHash', 'hash_algo_id' => 'hashAlgoId', 'created_at' => 'createdAt' ];
+    private const COL_TO_PROP = [ 'id' => 'id', 'subject_table' => 'subjectTable', 'subject_pk' => 'subjectPk', 'context' => 'context', 'algo_id' => 'algoId', 'signing_key_id' => 'signingKeyId', 'signature' => 'signature', 'payload_hash' => 'payloadHash', 'hash_algo_id' => 'hashAlgoId', 'created_at' => 'createdAt' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [];
@@ -39,13 +39,8 @@ final class SignatureDtoMapper
 
     private static function tz(): DateTimeZone
     {
-        if (self::$tzObj instanceof DateTimeZone) {
-            return self::$tzObj;
-        }
-        try {
+        if (!(self::$tzObj instanceof DateTimeZone)) {
             self::$tzObj = new DateTimeZone(self::TZ);
-        } catch (\Throwable) {
-            self::$tzObj = new DateTimeZone('UTC');
         }
         return self::$tzObj;
     }
