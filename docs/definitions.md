@@ -6,14 +6,14 @@ Digital signatures over critical entities for audit integrity.
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
 | algo_id | BIGINT | NO |  | Signature algorithm (FK crypto_algorithms.id). |
-| context |  | NO |  | Logical context (audit_chain, event_outbox, etc.). |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| context | VARCHAR(64) | NO |  | Logical context (audit_chain, event_outbox, etc.). |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | hash_algo_id | BIGINT | NO |  | Hash algorithm used (FK crypto_algorithms.id). |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| payload_hash | BYTEA | NO |  | Hash of the signed payload. |
-| signature | BYTEA | NO |  | Binary signature blob. |
+| payload_hash | VARBINARY(64) | NO |  | Hash of the signed payload. |
+| signature | LONGBLOB | NO |  | Binary signature blob. |
 | signing_key_id | BIGINT | YES |  | Signing key used (FK signing_keys.id). |
-| subject_pk |  | NO |  | Primary key of the signed record. |
+| subject_pk | VARCHAR(64) | NO |  | Primary key of the signed record. |
 | subject_table | VARCHAR(64) | NO |  | Table of the signed entity. |
 
 ## Engine Details
@@ -63,5 +63,5 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_signatures | mysql | algorithm=MERGE, security=INVOKER | [packages\signatures\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/signatures/schema/040_views.mysql.sql) |
-| vw_signatures | postgres |  | [packages\signatures\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/signatures/schema/040_views.postgres.sql) |
+| vw_signatures | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_signatures | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
