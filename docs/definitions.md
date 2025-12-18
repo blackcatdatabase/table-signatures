@@ -3,18 +3,18 @@
 Digital signatures over critical entities for audit integrity.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| id | BIGINT | NO |  | Surrogate primary key. |
-| subject_table | VARCHAR(64) | NO |  | Table of the signed entity. |
-| subject_pk | VARCHAR(64) | NO |  | Primary key of the signed record. |
-| context | VARCHAR(64) | NO |  | Logical context (audit_chain, event_outbox, etc.). |
-| algo_id | BIGINT | NO |  | Signature algorithm (FK crypto_algorithms.id). |
-| signing_key_id | BIGINT | YES |  | Signing key used (FK signing_keys.id). |
-| signature | mysql: LONGBLOB / postgres: BYTEA | NO |  | Binary signature blob. |
-| payload_hash | mysql: VARBINARY(64) / postgres: BYTEA | NO |  | Hash of the signed payload. |
-| hash_algo_id | BIGINT | NO |  | Hash algorithm used (FK crypto_algorithms.id). |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| id | BIGINT | NO |  | Surrogate primary key. |  |
+| subject_table | VARCHAR(64) | NO |  | Table of the signed entity. |  |
+| subject_pk | mysql: VARCHAR(64) | NO |  | Primary key of the signed record. |  |
+| context | mysql: VARCHAR(64) | NO |  | Logical context (audit_chain, event_outbox, etc.). |  |
+| algo_id | BIGINT | NO |  | Signature algorithm (FK crypto_algorithms.id). |  |
+| signing_key_id | BIGINT | YES |  | Signing key used (FK signing_keys.id). |  |
+| signature | mysql: LONGBLOB / postgres: BYTEA | NO |  | Binary signature blob. |  |
+| payload_hash | mysql: VARBINARY(64) / postgres: BYTEA | NO |  | Hash of the signed payload. |  |
+| hash_algo_id | BIGINT | NO |  | Hash algorithm used (FK crypto_algorithms.id). |  |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |  |
 
 ## Engine Details
 

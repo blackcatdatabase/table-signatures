@@ -1,0 +1,38 @@
+{
+  "tables": {
+    "signatures": {
+      "columns": {
+        "algo_id": {
+          "strategy": "passthrough"
+        },
+        "context": {
+          "strategy": "passthrough"
+        },
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "hash_algo_id": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "payload_hash": {
+          "strategy": "passthrough"
+        },
+        "signature": {
+          "strategy": "passthrough"
+        },
+        "signing_key_id": {
+          "strategy": "passthrough"
+        },
+        "subject_pk": {
+          "strategy": "passthrough"
+        },
+        "subject_table": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
