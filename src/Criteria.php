@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'subject_table', 'subject_pk', 'context' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'id', 'subject_table', 'subject_pk', 'context', 'algo_id', 'signing_key_id', 'hash_algo_id', 'created_at' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'id', 'subject_table', 'subject_pk', 'context', 'algo_id', 'signing_key_id', 'hash_algo_id', 'created_at' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
